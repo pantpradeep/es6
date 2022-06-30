@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="append"></div>
+        <div id="object"></div>
+        <div id="forIn"></div>
+
+
+
+        <input type = "button" value = "Click me" onclick = "fun1();" />
+        <script>
+           const person = {
+            name:'pradeep',
+            age:'32.568',
+            fullName : function (){
+                return this.name + " " +  this.lastname 
+            },
+            calc : function(){
+                'use strict';
+                // return Math.round(((parseFloat(this.age) + 40)* 100)/100);
+                 
+                    var raju = parseFloat(this.age) + 40;
+                    //console.log(raju.toFixed(2))
+                    // return raju 
+                    return  raju.toFixed(2)
+            }
+           }
+           person.lastname = "pant"
+           var size = Object.keys(person);
+        //    console.log(person.calc());
+
+           let text = "";
+            for (let x in person) {
+            text += person[x];
+                if(typeof(person[x]) == "function"){
+                    console.log("key ", x , "value ", person[x]())
+                }
+                else 
+                console.log("key ", x , "value ", person[x])
+            }
+            // console.log(text);
+            function multi(x){
+                // let txt = 0;
+                for(let i=1; i<=10; i++){
+                    const y= x * i;
+                    console.log(y, i);
+                }   
+              
+            }
+            
+            multi(2);
+
+            function sum (x,y,z){
+                if(!(typeof(z) == "undefined")){
+                    return x+y+z;
+                }
+                return x+y;
+                
+            }
+            
+            console.log("sum ", sum(2,3));
+
+            function fun1() {
+                let text1= "";
+                let person = prompt("enter name", "")
+                // prompt ("This is a prompt box", "");
+                if(person == "null" || person == ""){
+                    text1 = "user cancel"
+                }
+                else {
+                    text1 = "name " + person;
+                }
+                document.getElementById("forIn").innerHTML=text1
+            }
+
+            const me = {
+                name:'Raju',
+                walk() {
+                    console.log(this);
+                }
+            }
+            me.walk(); 
+            const walk = me.walk.bind(me);
+            // console.log(walk);
+            walk();
+            // const targetMember = 'name';
+            // console.log(me[targetMember]);
+           
+            // const sqaure = function(number){
+            //     return number* number
+            // }
+
+            const sqaure = number =>{
+                return number * number
+            }
+            console.log(sqaure(5));
+
+           const people = {
+            talk() {
+                // var self = this;
+                // setTimeout(function (){
+                //     console.log("this", self);
+                // },1000)
+
+                setTimeout(() => {
+                    console.log("this", this);
+                },1000)
+               
+            }
+           }
+           people.talk();
+
+        //Array.map
+        const colors= ['red', 'green', 'blue']; 
+        //    colors.map(function(color){
+        //         return '<li>' + color + '</li>';
+        //    })
+        //    colors.map(color => '<li>' + color + '</li>');
+
+        const items=  colors.map(color => `<li>${color}</li>`);
+        console.log(items);
+        
+
+        //object destructing
+        const address = {
+            street:'4',
+            city:'mzn',
+            country:'india'
+        }
+        // const street = address.street;
+        // const city = address.city;
+        // const country = address.city;
+        const {street, city, country} = address;
+        console.log(street);
+
+
+        //spread operator
+        const first = [1,2,3];
+        const second = [4,5,6];
+        const combined = first.concat(second);
+        const combined1=[...first, ...second];
+        console.log(combined1);
+
+        const clone =  [...first];
+
+        const firstu = {
+            name:'Mosh'
+        }
+        const secondu= {
+            job:'inst'
+        }
+
+        const combineed = {...firstu, ...secondu, location:'noida'}
+
+        //class
+
+        class Per {
+            constructor(name) {
+                this.name=name;
+            }
+            walk(){
+                console.log("walk");
+            }
+
+            
+        }
+
+        const personn = new Per("Mosh");
+        personn.walk();
+
+
+
+        class Peru {
+            construuctor(name) {
+                this.name=name;
+            }
+            walk(){
+                console.log("walk");
+            }
+  
+        }
+
+        class Teacher extends Peru{
+            constructor(name, degree) {
+                super(name);
+                this.degree = degree;
+            }
+            tech() {
+                console.log("tech");
+            }
+        }
+        
+        const teacher = new Teacher('mosh', "msc");
+        teacher.walk
+
+        </script>
+    </body>
+</html>
